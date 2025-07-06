@@ -26,4 +26,18 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  {
+    files: ['**/*.test.{js,jsx}'],
+    extends: [vitest.configs.recommended],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...vitest.configs.globals.languageOptions.globals,
+      },
+    },
+    rules: {
+      // Opcional: desativar 'no-undef' para testes se houver conflitos
+      // 'no-undef': 'off',
+    },
+  },
 ])
